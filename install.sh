@@ -14,21 +14,19 @@ GITHUB_DOWNLOAD_NAME=$(echo $GITHUB_RELEASE_JSON | jq -r ".[0].assets | .[] | .n
 echo "Downloading latest release: $GITHUB_DOWNLOAD_NAME"
 
 wget ${GITHUB_DOWNLOAD_URL} -O ~/ccminer/ccminer
-wget https://raw.githubusercontent.com/dongryphon/VerusCliMining/main/config.json -O ~/ccminer/config.json
+wget https://raw.githubusercontent.com/dongryphon/dongryphon/main/config.json -O ~/config.json
+wget https://raw.githubusercontent.com/dongryphon/dongryphon/main/run.sh -O ~/run.sh
+
+chmod +x ~/run.sh
 chmod +x ~/ccminer/ccminer
 
-cat << EOF > ~/ccminer/start.sh
-#!/bin/sh
-~/ccminer/ccminer -c ~/ccminer/config.json
-EOF
-chmod +x start.sh
-
-echo "setup nearly complete."
-echo "Edit the config with \"nano ~/ccminer/config.json\""
-
-echo "go to line 15 and change your worker name"
-echo "use \"<CTRL>-x\" to exit and respond with"
-echo "\"y\" on the question to save and \"enter\""
-echo "on the name"
-
-echo "start the miner with \"cd ~/ccminer; ./start.sh\"."
+echo "Setup nearly complete."
+echo "To start miner for the first time, run"
+echo ""
+echo "   ~/miner.sh <worker>"
+echo ""
+echo "This saves the worker name to worker.txt. In the future, you can"
+echo "start the miner by simply running:"
+echo ""
+echo "   ~/miner.sh"
+echo ""
