@@ -15,9 +15,9 @@ echo "Downloading latest release: $GITHUB_DOWNLOAD_NAME"
 
 wget ${GITHUB_DOWNLOAD_URL} -O ~/ccminer/ccminer
 wget https://raw.githubusercontent.com/dongryphon/dongryphon/main/config.json -O ~/config.json
-wget https://raw.githubusercontent.com/dongryphon/dongryphon/main/run.sh -O ~/run.sh
+wget https://raw.githubusercontent.com/dongryphon/dongryphon/main/miner.sh -O ~/miner.sh
 
-chmod +x ~/run.sh
+chmod +x ~/miner.sh
 chmod +x ~/ccminer/ccminer
 
 echo "Setup nearly complete."
