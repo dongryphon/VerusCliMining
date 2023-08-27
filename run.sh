@@ -1,37 +1,29 @@
-WRKR="$1"
+#!/bin/bash
+DIR="$(dirname ""$(realpath ""$0""))"""
+
+WORKER="$1"
+CONFIG_FILE="${DIR}/ccminer/config.json"
+CONFIG_TPL="${DIR}/config.json"
+WORKER_FILE="${DIR}/worker.txt"
 
 # run.sh <workerName> once to save name to worker.txt
 # run.sh alone to run using saved worker name
 
-if [[ ! -z "${WRKR}" ]]; then
-    echo "Setting worker name '${WRKR}'"
-    echo "${WRKR}" > worker.txt
-elif [[ -f worker.txt ]]; then
-    WRKR="$(cat worker.txt)"
+if [[ ! -z "${WORKER}" ]]; then
+    echo "Setting worker name '${WORKER}'"
+    echo "${WORKER}" > "${WORKER_FILE}"
+elif [[ -f "${WORKER_FILE}" ]]; then
+    WORKER="$(cat ""${WORKER_FILE}"")"
 fi
 
 echo "--------------------------------------------------"
-echo "Worker: ${WRKR}"
-
-# On first run, copy config.json to config.tpl as our template
-if [[ ! -f config.tpl ]]; then
-    echo "Backup config.json"
-    cp config.json config.tpl
-fi
+echo "Worker: ${WORKER}"
 
 # Generate clean config.json by replacing WORKER_NAME with real name
-rm config.json
+echo "Generate config file: ${CONFIG_FILE}"
+cat "${CONFIG_TPL}" | sed "s/WORKER_NAME/${WORKER}/g" > "${CONFIG_FILE}"
 
-while IFS= read -r line; do
-    # echo "DBG: ${line}"
-    if [[ "${line}" =~ ^(.*)WORKER_NAME(.*)$ ]]; then
-        echo "${BASH_REMATCH[1]}${WRKR}${BASH_REMATCH[2]}" >> config.json
-    else
-        echo "${line}" >> config.json
-    fi
-done < config.tpl
-
-echo "Starting ccminer"
+echo "Starting ccminer..."
 echo "--------------------------------------------------"
 
-./ccminer/start.sh
+~/ccminer/ccminer -c "${CONFIG_FILE}"
