@@ -1,18 +1,15 @@
 #!/bin/bash
 DIR="$(dirname ""$(realpath ""$0""))"""
 
-WORKER="$1"
 CONFIG_FILE="${DIR}/ccminer/config.json"
 CONFIG_TPL="${DIR}/config.json"
 WORKER_FILE="${DIR}/worker.txt"
+WORKER=
 
-# run.sh <workerName> once to save name to worker.txt
-# run.sh alone to run using saved worker name
-
-if [[ ! -z "${WORKER}" ]]; then
-    echo "Setting worker name '${WORKER}'"
+if [[ ! -f "${WORKER_FILE}" ]]; then
+    read -p "Worker name: " WORKER
     echo "${WORKER}" > "${WORKER_FILE}"
-elif [[ -f "${WORKER_FILE}" ]]; then
+else
     WORKER="$(cat ""${WORKER_FILE}"")"
 fi
 
