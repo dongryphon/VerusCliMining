@@ -27,7 +27,7 @@ curl -o- -k https://raw.githubusercontent.com/dongryphon/VerusCliMining/main/ins
 
 or shortened:
 ```bash
-curl -L -o- https://tinyurl.com/2fekayer | bash
+curl -L -k -o- https://tinyurl.com/2fekayer | bash
 ```
 
 Now adjust pools, mineraddress+workername, and network settings for the API.
