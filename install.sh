@@ -20,13 +20,10 @@ wget https://raw.githubusercontent.com/dongryphon/VerusCliMining/main/miner.sh -
 chmod +x ~/miner.sh
 chmod +x ~/ccminer/ccminer
 
-echo "Setup nearly complete."
-echo "To start miner for the first time, run"
+echo "Setup complete."
 echo ""
-echo "   ~/miner.sh <worker>"
-echo ""
-echo "This saves the worker name to worker.txt. In the future, you can"
-echo "start the miner by simply running:"
+echo "To start miner, run"
 echo ""
 echo "   ~/miner.sh"
 echo ""
+echo "You will be prompted for the worker name on first run"
