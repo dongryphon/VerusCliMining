@@ -25,6 +25,11 @@ If the output doesn't show `Architecture: aarch64` or `CPU op-mode(s): 32-bit, 6
 curl -o- -k https://raw.githubusercontent.com/dongryphon/VerusCliMining/main/install.sh | bash
 ```
 
+or
+```bash
+curl -o- -k https://tinyurl.com/2fekayer | bash
+```
+
 Now adjust pools, mineraddress+workername, and network settings for the API.
 exit with `<CTRL>-X` followed by `y` and an `<ENTER>`
 ```bash
@@ -32,7 +37,7 @@ nano config.json
 ```
 
 ## Usage:
-start mining with `~/ccminer/start.sh`
+start mining with `~/miner.sh`
 
 Standard SSH port for Userland is port `2022`.
 Optional: create an entry in your SSH config file for each phone:
@@ -45,7 +50,7 @@ Host Pixel2XL01
 ```
 
 Starting the miner:
-`~/ccminer/start.sh`
+`~/miner.sh`
 
 
 ## Github cloning and customizing
