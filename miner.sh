@@ -25,6 +25,10 @@ echo "Generate config file: ${CONFIG_FILE}"
 cat "${CONFIG_TPL}" | sed "s/WORKER_NAME/${WORKER}/g" > "${CONFIG_FILE}"
 cat "${CONFIG_FILE}" | sed "s/WALLET/${WALLET}/g" > "${CONFIG_FILE}"
 
+echo "Config file:"
+echo "--------------------------------------------------"
+cat "${CONFIG_FILE}"
+echo "--------------------------------------------------"
 echo "Starting ccminer..."
 echo "--------------------------------------------------"
 
