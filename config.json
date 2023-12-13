@@ -4,7 +4,7 @@
         "url": "stratum+tcp://pool.verus.io:9999",
         "timeout": 150
     }],
-    "user": "RSsb92Nx71tyMQ1bohg9S8SGS6wgEGEtP2",
+    "user": "WALLET",
     "pass": "x",
     "algo": "verus",
     "threads": 8,
