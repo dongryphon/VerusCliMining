@@ -17,6 +17,7 @@ wget ${GITHUB_DOWNLOAD_URL} -O ~/ccminer/ccminer
 wget https://raw.githubusercontent.com/dongryphon/VerusCliMining/master/config.json -O ~/config.json
 wget https://raw.githubusercontent.com/dongryphon/VerusCliMining/master/miner.sh -O ~/miner.sh
 
+[ -f /storage/internal/WALLET ] && cp /storage/internal/WALLET ~/WALLET
 chmod +x ~/miner.sh
 chmod +x ~/ccminer/ccminer
 
