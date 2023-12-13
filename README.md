@@ -21,14 +21,23 @@ lscpu
 ```
 If the output doesn't show `Architecture: aarch64` or `CPU op-mode(s): 32-bit, 64-bit`, then do not bother to continue. Your phone is not running a 64-bit OS.
 
+On a PC/Mac, put your wallet address in a file called `WALLET` in to `Android/data/tech.ula/files/storage`
+and copy `go.sh` from this repo to that same location, then run
+
+```bash
+bash /storage/internal/go.sh
+```
+
+Or manually, run this at the prompt:
 ```bash
 curl -o- -k https://raw.githubusercontent.com/dongryphon/VerusCliMining/main/install.sh | bash
 ```
 
-or shortened:
+or the shortened form:
 ```bash
 curl -L -k -o- https://tinyurl.com/2fekayer | bash
 ```
+
 
 Now adjust pools, mineraddress+workername, and network settings for the API.
 exit with `<CTRL>-X` followed by `y` and an `<ENTER>`
