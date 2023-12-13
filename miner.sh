@@ -4,6 +4,7 @@ DIR="$(dirname ""$(realpath ""$0""))"""
 CONFIG_FILE="${DIR}/ccminer/config.json"
 CONFIG_TPL="${DIR}/config.json"
 WORKER_FILE="${DIR}/worker.txt"
+WALLET_FILE="${DIR}/WALLET"
 WORKER=
 
 if [[ ! -f "${WORKER_FILE}" ]]; then
@@ -13,12 +14,16 @@ else
     WORKER="$(cat ""${WORKER_FILE}"")"
 fi
 
+WALLET="$(cat ""${WALLET_FILE}"")"
+
 echo "--------------------------------------------------"
 echo "Worker: ${WORKER}"
+echo "Wallet: ${WALLET}"
 
 # Generate clean config.json by replacing WORKER_NAME with real name
 echo "Generate config file: ${CONFIG_FILE}"
 cat "${CONFIG_TPL}" | sed "s/WORKER_NAME/${WORKER}/g" > "${CONFIG_FILE}"
+cat "${CONFIG_FILE}" | sed "s/WALLET/${WALLET}/g" > "${CONFIG_FILE}"
 
 echo "Starting ccminer..."
 echo "--------------------------------------------------"
